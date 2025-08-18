@@ -266,10 +266,10 @@ install(FILES "${CMAKE_CURRENT_SOURCE_DIR}/cmake/FindGRPC.cmake"
               "${PROJECT_BINARY_DIR}/etcd-cpp-api-config-version.cmake"
         DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/etcd-cpp-api
 )
-install(EXPORT etcd-targets
-        FILE etcd-targets.cmake
-        DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/etcd-cpp-api
-)
+#install(EXPORT etcd-targets
+#        FILE etcd-targets.cmake
+#        DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/etcd-cpp-api
+#)
 
 file(GLOB_RECURSE FILES_NEED_FORMAT
         "etcd/*.hpp"
