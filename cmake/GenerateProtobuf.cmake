@@ -78,6 +78,18 @@ function(protobuf_generate_latest)
     endif()
   endforeach()
 
+  # 💡 补充: 如果用户手动传入 PROTOBUF_INCLUDE_DIRS，添加进去
+if(PROTOBUF_INCLUDE_DIRS)
+  foreach(DIR ${PROTOBUF_INCLUDE_DIRS})
+    get_filename_component(ABS_PATH ${DIR} ABSOLUTE)
+    list(FIND _protobuf_include_path ${ABS_PATH} _contains_already)
+    if(${_contains_already} EQUAL -1)
+        list(APPEND _protobuf_include_path -I ${ABS_PATH})
+    endif()
+  endforeach()
+endif()
+
+
   set(_generated_srcs_all)
   foreach(_proto ${protobuf_generate_latest_PROTOS})
     get_filename_component(_abs_file ${_proto} ABSOLUTE)
